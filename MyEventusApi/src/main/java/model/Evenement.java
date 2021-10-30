@@ -2,10 +2,17 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "evenement")
 public class Evenement {
 
-
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uid;
+	
     private String lien;
     private String Information_Pratiques;
     private String image;
@@ -25,7 +32,10 @@ public class Evenement {
     private String timeTable;
     private String tarif;
     private Date datMiseAJour;
-
+    
+    public Evenement() {
+    	
+    }
     
     public Evenement(int uid, String lien, String information_Pratiques, String image, String langue, String titre,
             String description, String details, String mots_cles, String latlong, String place, String adresse,
@@ -173,6 +183,17 @@ public class Evenement {
         this.datMiseAJour = datMiseAJour;
     }
 
+	@Override
+	public String toString() {
+		return "Evenement [uid=" + uid + ", lien=" + lien + ", Information_Pratiques=" + Information_Pratiques
+				+ ", image=" + image + ", langue=" + langue + ", titre=" + titre + ", description=" + description
+				+ ", details=" + details + ", mots_cles=" + mots_cles + ", latlong=" + latlong + ", place=" + place
+				+ ", adresse=" + adresse + ", departement=" + departement + ", region=" + region + ", ville=" + ville
+				+ ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", timeTable=" + timeTable + ", tarif=" + tarif
+				+ ", datMiseAJour=" + datMiseAJour + "]";
+	}
+    
+    
 
     
 }

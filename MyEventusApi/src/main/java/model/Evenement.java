@@ -2,17 +2,24 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "evenement")
 public class Evenement {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idevenement;
 
     private int uid;
     private String lien;
-    private String Information_Pratiques;
+    private String informations_pratiques;
     private String image;
     private String langue;
     private String titre;
     private String description;
-    private String details;
     private String mots_cles;
     private String latlong;
     private String place;
@@ -24,21 +31,23 @@ public class Evenement {
     private Date dateFin;
     private String timeTable;
     private String tarif;
-    private Date datMiseAJour;
-
+    private Date dateMiseAJour;
+    
+    public Evenement() {
+    	
+    }
     
     public Evenement(int uid, String lien, String information_Pratiques, String image, String langue, String titre,
-            String description, String details, String mots_cles, String latlong, String place, String adresse,
+            String description, String mots_cles, String latlong, String place, String adresse,
             String departement, String region, String ville, Date dateDebut, Date dateFin, String timeTable,
-            String tarif, Date datMiseAJour) {
+            String tarif, Date dateMiseAJour) {
         this.uid = uid;
         this.lien = lien;
-        Information_Pratiques = information_Pratiques;
+        this.informations_pratiques = information_Pratiques;
         this.image = image;
         this.langue = langue;
         this.titre = titre;
         this.description = description;
-        this.details = details;
         this.mots_cles = mots_cles;
         this.latlong = latlong;
         this.place = place;
@@ -50,7 +59,14 @@ public class Evenement {
         this.dateFin = dateFin;
         this.timeTable = timeTable;
         this.tarif = tarif;
-        this.datMiseAJour = datMiseAJour;
+        this.dateMiseAJour = dateMiseAJour;
+    }
+
+    public int getIdEvenement() {
+        return idevenement;
+    }
+    public void setIdEvenement(int idevenement) {
+        this.idevenement = idevenement;
     }
     public int getUid() {
         return uid;
@@ -65,10 +81,10 @@ public class Evenement {
         this.lien = lien;
     }
     public String getInformation_Pratiques() {
-        return Information_Pratiques;
+        return informations_pratiques;
     }
     public void setInformation_Pratiques(String information_Pratiques) {
-        Information_Pratiques = information_Pratiques;
+        this.informations_pratiques = information_Pratiques;
     }
     public String getImage() {
         return image;
@@ -93,12 +109,6 @@ public class Evenement {
     }
     public void setDescription(String description) {
         this.description = description;
-    }
-    public String getDetails() {
-        return details;
-    }
-    public void setDetails(String details) {
-        this.details = details;
     }
     public String getMots_cles() {
         return mots_cles;
@@ -166,13 +176,20 @@ public class Evenement {
     public void setTarif(String tarif) {
         this.tarif = tarif;
     }
-    public Date getDatMiseAJour() {
-        return datMiseAJour;
+    public Date getDateMiseAJour() {
+        return dateMiseAJour;
     }
-    public void setDatMiseAJour(Date datMiseAJour) {
-        this.datMiseAJour = datMiseAJour;
+    public void setDateMiseAJour(Date datMiseAJour) {
+        this.dateMiseAJour = datMiseAJour;
     }
 
-
-    
+	@Override
+	public String toString() {
+		return "Evenement [uid=" + uid + ", lien=" + lien + ", Information_Pratiques=" + informations_pratiques
+				+ ", image=" + image + ", langue=" + langue + ", titre=" + titre + ", description=" + description
+				+ ", mots_cles=" + mots_cles + ", latlong=" + latlong + ", place=" + place
+				+ ", adresse=" + adresse + ", departement=" + departement + ", region=" + region + ", ville=" + ville
+				+ ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", timeTable=" + timeTable + ", tarif=" + tarif
+				+ ", dateMiseAJour=" + dateMiseAJour + "]";
+	}    
 }
